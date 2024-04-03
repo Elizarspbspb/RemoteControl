@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="/Icons">
+    <file>Computer.png</file>
+    <file>Notepad.png</file>
+    <file>Printer.png</file>
+    <file>Router.png</file>
+    <file>Server.png</file>
+    <file>startPict.png</file>
+  </qresource>
+</RCC>
