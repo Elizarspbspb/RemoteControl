@@ -5,6 +5,8 @@
 
 #include "./ui_addNewDev.h"
 
+#include <iostream>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class DialogNewDev; }
 QT_END_NAMESPACE

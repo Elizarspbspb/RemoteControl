@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1071</width>
-    <height>607</height>
+    <height>681</height>
    </rect>
   </property>
   <property name="font">
@@ -232,16 +232,6 @@ background-color: rgb(249, 240, 107);</string>
        <item>
         <property name="text">
          <string>Выбрать устройство</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>192.168.34.105</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>192.168.0.1</string>
         </property>
        </item>
       </widget>

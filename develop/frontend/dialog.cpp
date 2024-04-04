@@ -1,25 +1,31 @@
-#include <QFile>
+/*#include <QFile>
 #include <QTextStream>
 #include <QStringList>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QJsonArray>
+#include <QJsonArray> */
 #include <QDebug>
 
 #include "dialog.h"
+#include "newdevise.h"
+
+//#include "../backend/source/mainBack.cpp"
+#include "../backend/include/mainBack.h"
+
 #include "./ui_dialog.h"
 
-#include "newdevise.h"
+/*QString localFileName = "../remotecontrol/develop/devices.json";
+//QString localFileName = "devices.json"; */
 
 Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
 
     ui->setupUi(this);
 
-// /////////////////////////////////////////////
-// start json DB
-    QFile file("devices.json");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    if (!infile.open("devices.json")
+    // /////////////////////////////////////////////
+
+    // start json DB
+    /*QFile file(localFileName);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Ошибка открытия файла";
         return;
     }
@@ -47,19 +53,34 @@ Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
         if (value.isObject()) {
             QJsonObject obj = value.toObject();
             QString name = obj["name"].toString();
-            QString ipAddress = obj["ipAddress"].toString();
+            QString ipAddress = obj["IP-Addr"].toString();
             QString netMask = obj["netMask"].toString();
-            QString imageResource = obj["imageResource"].toString();
+            QString imageResource = obj["image"].toString();
 
-            // Делаем что-то с данными устройства (например, добавляем их в список устройств)
+            // Выводим устройства
             qDebug() << "Имя:" << name;
             qDebug() << "IP-адрес:" << ipAddress;
             qDebug() << "Маска сети:" << netMask;
             qDebug() << "Ресурс изображения:" << imageResource;
-        }
-    }
 
-// /////////////////////////////////////////////
+            // Добавляем в выпадающий список устройств
+            if(name.length() != 0)
+                ui->comboBoxDevice->addItem(name);
+            else
+                ui->comboBoxDevice->addItem(ipAddress);
+        }
+    }*/
+
+    startWork();
+    /* //foreach (const QJsonValue &value, jsonArray) {
+        // Добавляем в выпадающий список устройств
+        if(name.length() != 0)
+            ui->comboBoxDevice->addItem(name);
+        else
+            ui->comboBoxDevice->addItem(ipAddress);
+    }*/
+
+    // /////////////////////////////////////////////
 
     on_comboBoxDevice_activated(0);
 }

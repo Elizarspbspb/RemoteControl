@@ -8,8 +8,9 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Выбор компилятора
 # set(CMAKE_CXX_COMPILER "g++")
@@ -20,11 +21,12 @@ set(CMAKE_CXX_COMPILER "clang++")
 # -stdlib=libstdc++ Стандартная библиотека GNU. Для macOS libc++
 # -Wall Базовый набор предупреждений компилятора
 # -Wextra Расширенный набор предупреждений компилятора
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libstdc++ -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libstdc++ -Wall -Wextra")
 
 # Подключение библиотек
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+#find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Core REQUIRED)
 
 # LLVM
 enable_language(C)
@@ -58,6 +60,7 @@ set (REMOTE_CONTROL_SRC
 set (REMOTE_CONTROL_HDR
     ${FRONTEND_DIR}/dialog.h
     #${FRONTEND_DIR}/menuManager.h
+    ${BACKEND_INCLUDE}/mainBack.h
     ${FRONTEND_DIR}/newdevise.h
 )
 set (REMOTE_CONTROL_UI
@@ -109,6 +112,7 @@ else()
 endif()
 
 target_link_libraries(remoteControl PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${LLVM_LIBRARIES})
+#target_link_libraries(remoteControl PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${LLVM_LIBRARIES} Core)
 
 set_target_properties(remoteControl PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

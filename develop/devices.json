@@ -16,5 +16,11 @@
 		"IP-Addr": "192.168.33.1",
 		"netMask": "255.255.252.0",
 		"image": ":/image/Computer.png"
+	},
+	{
+		"name": "",
+		"IP-Addr": "192.168.33.1",
+		"netMask": "255.255.252.0",
+		"image": ":/image/Computer.png"
 	}
 ]
