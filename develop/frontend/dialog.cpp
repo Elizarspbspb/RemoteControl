@@ -10,78 +10,41 @@
 #include "newdevise.h"
 
 //#include "../backend/source/mainBack.cpp"
-#include "../backend/include/mainBack.h"
+//#include "../backend/include/mainBack.h"
 
 #include "./ui_dialog.h"
 
 /*QString localFileName = "../remotecontrol/develop/devices.json";
 //QString localFileName = "devices.json"; */
 
-Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog) {
-
+/*Dialog::Dialog(QWidget *parent) : QDialog(parent), ui(new Ui::Dialog), dev(0) {
     ui->setupUi(this);
-
     // /////////////////////////////////////////////
+        //startWork();
+    // /////////////////////////////////////////////
+    on_comboBoxDevice_activated(0);
+}*/
 
-    // start json DB
-    /*QFile file(localFileName);
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Ошибка открытия файла";
-        return;
-    }
-
-    // Считываем весь файл JSON
-    QJsonParseError parseError;
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(file.readAll(), &parseError);
-    file.close();
-
-    // Проверяем наличие ошибок при парсинге JSON
-    if (parseError.error != QJsonParseError::NoError) {
-        qDebug() << "Ошибка парсинга JSON:" << parseError.errorString();
-        return;
-    }
-
-    // Проверяем, что JSON представляет собой массив
-    if (!jsonDoc.isArray()) {
-        qDebug() << "JSON не является массивом";
-        return;
-    }
-
-    // Преобразуем JSON в массив объектов
-    QJsonArray jsonArray = jsonDoc.array();
-    foreach (const QJsonValue &value, jsonArray) {
-        if (value.isObject()) {
-            QJsonObject obj = value.toObject();
-            QString name = obj["name"].toString();
-            QString ipAddress = obj["IP-Addr"].toString();
-            QString netMask = obj["netMask"].toString();
-            QString imageResource = obj["image"].toString();
-
-            // Выводим устройства
-            qDebug() << "Имя:" << name;
-            qDebug() << "IP-адрес:" << ipAddress;
-            qDebug() << "Маска сети:" << netMask;
-            qDebug() << "Ресурс изображения:" << imageResource;
-
-            // Добавляем в выпадающий список устройств
-            if(name.length() != 0)
-                ui->comboBoxDevice->addItem(name);
-            else
-                ui->comboBoxDevice->addItem(ipAddress);
-        }
-    }*/
-
-    startWork();
-    /* //foreach (const QJsonValue &value, jsonArray) {
+//Dialog::Dialog(QWidget *parent, Deviсe &device) : QDialog(parent), ui(new Ui::Dialog), dev(device) {
+Dialog::Dialog(Deviсe &device, QWidget *parent) : QDialog(parent), ui(new Ui::Dialog), dev(device) {
+    ui->setupUi(this);
+    // /////////////////////////////////////////////
+    //if(!device.startWork()) {
+    device.startWork(); //{
         // Добавляем в выпадающий список устройств
-        if(name.length() != 0)
-            ui->comboBoxDevice->addItem(name);
-        else
-            ui->comboBoxDevice->addItem(ipAddress);
-    }*/
-
+        //for (auto in : *device.getDevices()) {
+        //for (auto in = device.getDevices().begin()->first; in != device.getDevices().end()->first; in++) {
+        //for (auto in = device.getDevices(); in != device.getDevices(); in++) {
+        for (auto in : device.getDevices()) {
+            if(std::atoi(in.second.nameDevise.c_str()) != 0)
+            //if(in != 0)
+                ui->comboBoxDevice->addItem(in.second.nameDevise.c_str());
+            else
+                ui->comboBoxDevice->addItem(in.second.ipAddress.c_str());
+            qDebug() << "!!!!!!!!!!!!!!!!!!!!";
+        }
+    //}
     // /////////////////////////////////////////////
-
     on_comboBoxDevice_activated(0);
 }
 

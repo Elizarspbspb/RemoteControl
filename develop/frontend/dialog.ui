@@ -30,24 +30,7 @@ background-color: rgb(246, 245, 244);</string>
    </property>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="4" column="0">
-      <widget class="QLabel" name="deviseLabel">
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <strikeout>false</strikeout>
-         <stylestrategy>PreferAntialias</stylestrategy>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ВЫБРАТЬ УСТРОЙСТВО&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
+     <item row="7" column="0">
       <widget class="QLabel" name="photoLabel">
        <property name="minimumSize">
         <size>
@@ -65,8 +48,46 @@ background-color: rgb(98, 160, 234);</string>
        </property>
       </widget>
      </item>
+     <item row="21" column="0" colspan="2">
+      <widget class="QPushButton" name="exitButton">
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(220, 138, 221);
+background-color: rgb(249, 240, 107);</string>
+       </property>
+       <property name="text">
+        <string>ЗАВЕРШИТЬ РАБОТУ ПРОГРАММЫ</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="3" column="1" rowspan="16">
+      <widget class="QListView" name="listView">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+     </item>
      <item row="11" column="0">
-      <widget class="QPushButton" name="addNewDevise">
+      <widget class="QPushButton" name="deleteDevise">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -75,43 +96,18 @@ background-color: rgb(98, 160, 234);</string>
          <kerning>true</kerning>
         </font>
        </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(143, 240, 164);</string>
+        <string notr="true">background-color: rgb(192, 28, 40);</string>
        </property>
        <property name="text">
-        <string>ДОБАВИТЬ НОВОЕ УСТРОЙСТВО</string>
+        <string>УДАЛИТЬ УСТРОЙСТВО</string>
        </property>
        <property name="default">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QLabel" name="mainLabel">
-       <property name="font">
-        <font>
-         <family>DejaVu Sans</family>
-         <pointsize>20</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-         <strikeout>false</strikeout>
-         <stylestrategy>PreferAntialias</stylestrategy>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 190, 111);</string>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ПРОГРАММА УДАЛЕННОГО УПРАВЛЕНИЯ &lt;br/&gt;ЛОКАЛЬНО-ВЫЧИСЛИТЕЛЬНЫМИ УСТРОЙСТВАМИ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="19" column="0" colspan="2">
+     <item row="20" column="0" colspan="2">
       <widget class="QPushButton" name="workButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -154,7 +150,7 @@ background-color: rgb(98, 160, 234);</string>
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
+     <item row="9" column="0">
       <widget class="QPushButton" name="editDevice">
        <property name="font">
         <font>
@@ -169,14 +165,7 @@ background-color: rgb(98, 160, 234);</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1" rowspan="15">
-      <widget class="QListView" name="listView">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
-       </property>
-      </widget>
-     </item>
-     <item row="12" column="0">
+     <item row="13" column="0">
       <widget class="QLabel" name="activityLabel">
        <property name="font">
         <font>
@@ -193,25 +182,33 @@ background-color: rgb(98, 160, 234);</string>
        </property>
       </widget>
      </item>
-     <item row="20" column="0" colspan="2">
-      <widget class="QPushButton" name="exitButton">
+     <item row="14" column="0">
+      <widget class="QComboBox" name="activityComboBox">
+       <item>
+        <property name="text">
+         <string>Выбрать действие</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="deviseLabel">
        <property name="font">
         <font>
-         <pointsize>16</pointsize>
+         <pointsize>14</pointsize>
          <weight>75</weight>
          <bold>true</bold>
+         <strikeout>false</strikeout>
+         <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>true</kerning>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(220, 138, 221);
-background-color: rgb(249, 240, 107);</string>
-       </property>
        <property name="text">
-        <string>ЗАВЕРШИТЬ РАБОТУ ПРОГРАММЫ</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ВЫБРАТЬ УСТРОЙСТВО&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
-     <item row="14" column="0">
+     <item row="15" column="0">
       <widget class="QPushButton" name="addDellActivity">
        <property name="font">
         <font>
@@ -227,7 +224,29 @@ background-color: rgb(249, 240, 107);</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="mainLabel">
+       <property name="font">
+        <font>
+         <family>DejaVu Sans</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+         <strikeout>false</strikeout>
+         <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 190, 111);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ПРОГРАММА УДАЛЕННОГО УПРАВЛЕНИЯ &lt;br/&gt;ЛОКАЛЬНО-ВЫЧИСЛИТЕЛЬНЫМИ УСТРОЙСТВАМИ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
       <widget class="QComboBox" name="comboBoxDevice">
        <item>
         <property name="text">
@@ -236,8 +255,8 @@ background-color: rgb(249, 240, 107);</string>
        </item>
       </widget>
      </item>
-     <item row="10" column="0">
-      <widget class="QPushButton" name="deleteDevise">
+     <item row="12" column="0">
+      <widget class="QPushButton" name="addNewDevise">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -246,38 +265,31 @@ background-color: rgb(249, 240, 107);</string>
          <kerning>true</kerning>
         </font>
        </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 28, 40);</string>
+        <string notr="true">background-color: rgb(143, 240, 164);</string>
        </property>
        <property name="text">
-        <string>УДАЛИТЬ УСТРОЙСТВО</string>
+        <string>ДОБАВИТЬ НОВОЕ УСТРОЙСТВО</string>
        </property>
        <property name="default">
         <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item row="13" column="0">
-      <widget class="QComboBox" name="activityComboBox">
-       <item>
-        <property name="text">
-         <string>Выбрать действие</string>
-        </property>
-       </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="groupManagement">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Управление группами</string>
+       </property>
       </widget>
-     </item>
-     <item row="7" column="0">
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>

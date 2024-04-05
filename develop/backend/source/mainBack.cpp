@@ -8,40 +8,9 @@
 #include <QJsonArray>
 #include <QString>
 
-/*#include <iostream>
-#include <string>
-#include <unordered_set>
+Deviсe::Deviсe() {};
 
-using namespace std;
-
-struct DeviseState final {
-    string nameDevise;
-    string ipAddress;
-    string netMask;
-    string imageResource;
-};
-
-//QString localFileName = "../remotecontrol/develop/devices.json";
-//QString localFileName = "../develop/devices.json";
-//string localFileName2 = "../develop/devices.json"; */
-
-int startWork() {
-
-    DeviseState one;
-    one.nameDevise = "astra";
-    one.ipAddress = "1";
-    one.netMask = "255";
-    one.nameDevise = "comp";
-    //unordered_set<DeviseState> masDev; // ERROR
-    //masDev.insert(one);
-    unordered_set<DeviseState*> masDev;
-    masDev.insert(&one);
-
-    //std::string localFileName = "../develop/devices.json";
-    QString localFileName = "../develop/devices.json";
-
-    // ///////////////////////////////////////
-
+int Deviсe::startWork() {
     // start json DB
     QFile file(localFileName);
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -82,13 +51,25 @@ int startWork() {
             qDebug() << "Маска сети:" << netMask;
             qDebug() << "Ресурс изображения:" << imageResource;
 
-            // Добавляем в выпадающий список устройств
-            //if(name.length() != 0)
-            //    ui->comboBoxDevice->addItem(name);
-            //else
-            //    ui->comboBoxDevice->addItem(ipAddress);
+            DeviseState dev;
+            int id = obj["id"].toInt();
+            dev.nameDevise = name.toStdString();
+            dev.ipAddress = ipAddress.toStdString();
+            dev.netMask = netMask.toStdString();
+            dev.nameDevise = imageResource.toStdString();
+            masDev.insert({id, dev});
+            qDebug() << "значения = " << &masDev.end()->first;
+            //qDebug() << "значения = " << masDev.end()->first;
+            //ui->comboBoxDevice->addItem(in.second.ipAddress.c_str());
         }
     }
-
     return 0;
+}
+
+/*unordered_map<int, Deviсe::DeviseState> *Deviсe::getDevices() {
+    return &masDev;
+}*/
+
+unordered_map<int, Deviсe::DeviseState> Deviсe::getDevices() {
+    return masDev;
 }

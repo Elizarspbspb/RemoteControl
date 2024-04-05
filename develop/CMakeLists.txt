@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.5)
 
 project(remoteControl VERSION 0.1 LANGUAGES CXX)
 
@@ -10,10 +10,10 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+#set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Выбор компилятора
-# set(CMAKE_CXX_COMPILER "g++")
+#set(CMAKE_CXX_COMPILER "g++")
 set(CMAKE_CXX_COMPILER "clang++")
 
 # опции компиляции и линковка для Clang / LLVM
@@ -21,18 +21,22 @@ set(CMAKE_CXX_COMPILER "clang++")
 # -stdlib=libstdc++ Стандартная библиотека GNU. Для macOS libc++
 # -Wall Базовый набор предупреждений компилятора
 # -Wextra Расширенный набор предупреждений компилятора
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libstdc++ -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libstdc++ -Wall -Wextra -Wno-unused-value") #clang
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall -Wextra") #g++
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libstdc++ -Wno-unused-value") #clang
 
 # Подключение библиотек
 #find_package(Qt6 REQUIRED COMPONENTS Core)
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Core REQUIRED)
+#find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Core REQUIRED)
+find_package(QT NAMES Qt5 COMPONENTS Widgets Core REQUIRED)
+#find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Core REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Core REQUIRED)
 
 # LLVM
-enable_language(C)
-find_package(LLVM REQUIRED CONFIG)
-include_directories(${LLVM_INCLUDE_DIRS})
-add_definitions(${LLVM_DEFINITIONS})
+#enable_language(C)
+#find_package(LLVM REQUIRED CONFIG)
+#include_directories(${LLVM_INCLUDE_DIRS})
+#add_definitions(${LLVM_DEFINITIONS})
 # ~LLVM
 
 # images
@@ -111,7 +115,8 @@ else()
     endif()
 endif()
 
-target_link_libraries(remoteControl PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${LLVM_LIBRARIES})
+target_link_libraries(remoteControl PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+#target_link_libraries(remoteControl PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${LLVM_LIBRARIES})
 #target_link_libraries(remoteControl PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${LLVM_LIBRARIES} Core)
 
 set_target_properties(remoteControl PROPERTIES
