@@ -60,16 +60,19 @@ set (REMOTE_CONTROL_SRC
     ${BACKEND_SOURCE}/mainBack.cpp
     #${FRONTEND_DIR}/additionParameters.cpp
     ${FRONTEND_DIR}/newdevise.cpp
+    ${FRONTEND_DIR}/delete_dev.cpp
 )
 set (REMOTE_CONTROL_HDR
     ${FRONTEND_DIR}/dialog.h
     #${FRONTEND_DIR}/menuManager.h
     ${BACKEND_INCLUDE}/mainBack.h
     ${FRONTEND_DIR}/newdevise.h
+    ${FRONTEND_DIR}/delete_dev.h
 )
 set (REMOTE_CONTROL_UI
     ${FRONTEND_DIR}/dialog.ui
     ${FRONTEND_DIR}/addNewDev.ui
+    ${FRONTEND_DIR}/delete_dev.ui
     ${DB}/devices.txt
     devices.json
 )
