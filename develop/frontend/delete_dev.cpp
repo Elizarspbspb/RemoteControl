@@ -7,8 +7,7 @@ deleteDevise::deleteDevise(QWidget *parent) : QDialog(parent), ui(new Ui::delete
     ui->setupUi(this);
 }
 
-deleteDevise::~deleteDevise()
-{
+deleteDevise::~deleteDevise() {
     delete ui;
 }
 

@@ -38,31 +38,78 @@ Deviсe::Deviсe() {};
 
 // Функция для загрузки JSON файла
 QJsonArray Deviсe::loadDevices(const QString& filename) {
-    QFile file(filename);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    qDebug() << "Cont... -6" << Qt::endl;
+    qDebug() << "Попытка открыть файл:" << filename;
+    // Проверяем, существует ли файл
+        if (!QFile::exists(filename)) {
+            qDebug() << "Файл не существует:" << filename;
+            return QJsonArray();
+        }
+qDebug() << "Cont... -67" << Qt::endl;
+    //QFile file(filename);
+    QFile *file = new QFile(filename);
+    qDebug() << "Cont... -7" << Qt::endl;
+    //if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Ошибка открытия файла";
         return QJsonArray();
     }
-
+qDebug() << "Cont... 66" << Qt::endl;
     // Считываем весь файл JSON
     QJsonParseError parseError;
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(file.readAll(), &parseError);
-    file.close();
+    //QJsonDocument jsonDoc = QJsonDocument::fromJson(file.readAll(), &parseError);
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(file->readAll(), &parseError);
+    //file.close();
+    file->close();
+    delete(file);
 
     // Проверяем наличие ошибок при парсинге JSON
     if (parseError.error != QJsonParseError::NoError) {
         qDebug() << "Ошибка парсинга JSON:" << parseError.errorString();
         return QJsonArray();
     }
-
+qDebug() << "Cont... 666" << Qt::endl;
     // Проверяем, что JSON представляет собой массив
     if (!jsonDoc.isArray()) {
         qDebug() << "JSON не является массивом";
         return QJsonArray();
     }
-
+qDebug() << "Cont... 6666" << Qt::endl;
     return jsonDoc.array();
 }
+
+//////////////////////////////////////////////
+///
+/*void saveDevicesToJson(const std::map<int, DeviseState>& masDev, const QString& filename) {
+    QJsonArray jsonArray;
+
+    for (const auto& [key, device] : masDev) {
+        QJsonObject jsonObj;
+        deviceObject["id"] = id;
+        deviceObject["name"] = QString::fromStdString(device.nameDevise);
+        jsonObj["id"] = device.id;
+        jsonObj["name"] = device.name;
+        jsonObj["IP-Addr"] = device.ipAddr;
+        jsonObj["netMask"] = device.netMask;
+        jsonObj["image"] = device.image;
+
+        jsonArray.append(jsonObj);
+    }
+
+    QJsonDocument jsonDoc(jsonArray);
+    QFile file(filename);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "Ошибка открытия файла для записи:" << filename;
+        return;
+    }
+
+    file.write(jsonDoc.toJson());
+    file.close();
+    qDebug() << "Данные успешно записаны в файл:" << filename;
+}*/
+/// ////////////////////////////////////////////
+///
 
 // Функция для сохранения устройств в файл
 //bool Deviсe::saveDevices(const std::unordered_map<int, DeviseState>& deviceMap) {
@@ -87,7 +134,7 @@ qDebug() << "Cont... 555" << Qt::endl;
     QJsonArray devicesArray = loadDevices(localFileName);
     qDebug() << "Cont... 55" << Qt::endl;
     for (const auto& [id, device] : deviceMap) {
-                deviceObject["id"] = id;
+        deviceObject["id"] = id;
         deviceObject["name"] = QString::fromStdString(device.nameDevise);
         deviceObject["IP-Addr"] = QString::fromStdString(device.ipAddress);
         deviceObject["netMask"] = QString::fromStdString(device.netMask);
@@ -103,8 +150,6 @@ qDebug() << "Cont... 6" << Qt::endl;
     appendToJson(localFileName, deviceObject);
     return 0;
 }
-
-
 
 // Функция для сохранения JSON файла
 /*void Deviсe::saveDevices(const QString& filename, const QJsonArray& devices) {
@@ -172,19 +217,6 @@ int Deviсe::startWork() {
     return maxId + 1;
 }*/
 
-/*int Deviсe::getNextId(const QJsonArray& devices) {
-    int maxId = 0;
-    for (const QJsonValue& value : devices) {
-        QJsonObject device = value.toObject();
-        int id = device["id"].toString().toInt();
-        if (id > maxId) {
-            maxId = id;
-        }
-        cout << "MAX id = " << maxId << endl;
-    }
-    return maxId + 1;
-}*/
-
 // Функция для добавления нового устройства
 //void Deviсe::addDevice(QJsonArray& devices, const QString& name, const QString& ipAddress, const QString& netMask, const QString& imageResource) {
 //void Deviсe::addDevice(const std::unordered_map<int, DeviseState> &deviceMap, const QString& name, const QString& ipAddress, const QString& netMask, const QString& imageResource) {
@@ -197,7 +229,14 @@ void Deviсe::addDevice(const QString& name, const QString& ipAddress, const QSt
     qDebug() << "Cont... 1" << Qt::endl;
     //int id = getNextId(masDev);
     int id = masDev.end()->first;
-    qDebug() << "Cont... 11" << Qt::endl;
+    //int id = masDev.begin()->first;
+    qDebug() << "Cont... 11; id = " << id << Qt::endl;
+
+    for (const auto& [key, value] : masDev) {
+           std::cout << "Key: " << key << ", Value: " << &value << std::endl;
+       }
+
+
         //dev.id = qid.toStdString();
     dev.id = QString::number(id).toStdString();
     //dev.id = QString::number(masDev.end()->first).toStdString();
@@ -218,8 +257,17 @@ void Deviсe::addDevice(const QString& name, const QString& ipAddress, const QSt
         }
         qDebug() << "Cont... 3" << Qt::endl;
     //saveDevices(masDev);
+    int newKey = masDev.size() + 1;
+    masDev.insert({newKey, dev});
     saveDevices(masDev);
+    // Получаем текущий размер карты
+    /*int newKey = masDev.size() + 1;
+    qDebug() << "size = " << newKey << Qt::endl;
+    masDev.insert({newKey, dev});*/
     qDebug() << "Cont... 4" << Qt::endl;
+    for (const auto& [key, value] : masDev) {
+           std::cout << "Key: " << key << ", Value: " << &value << std::endl;
+       }
     /*int newId = getNextId(devices);
     QJsonObject newDevice;
     newDevice["id"] = QString::number(newId);

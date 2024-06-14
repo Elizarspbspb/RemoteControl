@@ -17,18 +17,10 @@ class Dialog : public QDialog {
 private:
     Ui::Dialog *ui;
     Deviсe& dev;
-    //const Deviсe defaultDevice2;
-    //unordered_map<int, QString> photoDev;
     unordered_map<QString, QString> photoDev;
 
 public:
-    //Dialog(QWidget *parent = nullptr);
-    //Dialog(QWidget *parent = nullptr, Deviсe &dev = defaultDevice);
-    //Dialog(Deviсe &dev = defaultDevice, QWidget *parent = nullptr);
     Dialog(Deviсe &dev, QWidget *parent = nullptr);
-
-    //uint addNewDevice();
-    //void changeIndexPhoto(int);
     ~Dialog();
 
 private slots:
@@ -42,7 +34,5 @@ private slots:
 
 private slots:
     void on_addNewDevise_clicked();
-
-    //void on_comboBoxDevice_activated(int index);
 };
 #endif // DIALOG_H

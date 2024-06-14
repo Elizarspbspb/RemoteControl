@@ -22,12 +22,10 @@ private:
     //Ui::NewDevise *uidev;
     Ui::DialogNewDev *uidev;
     //Ui1::DialogNewDev *uidev;
-    Deviсe& nwDev;
-    //Deviсe nwDev;
+    //Deviсe& nwDev;
+    Deviсe nwDev;
 
 public:
-    //explicit DialogNewDev(QDialog *parent = nullptr);
-    //DialogNewDev(Deviсe &nwDev, QWidget *parent = nullptr);
     DialogNewDev(Deviсe nwDev, QWidget *parent = nullptr);
     uint addNewDevice();
     ~DialogNewDev();

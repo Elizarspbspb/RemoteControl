@@ -1,13 +1,6 @@
-/*#include <QFile>
-#include <QTextStream>
-#include <QStringList>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonArray> */
 #include <QDebug>
 
 #include "dialog.h"
-//#include "newdevise.h"
 #include "delete_dev.h"
 
 #include "./ui_dialog.h"
@@ -46,39 +39,14 @@ Dialog::Dialog(Deviсe &device, QWidget *parent) : QDialog(parent), ui(new Ui::D
 }
 
 void Dialog::on_addNewDevise_clicked() {
-    /*newDeviseAdd *newDev = new newDeviseAdd(this); */
-    //DialogNewDev newDev(dev);
     DialogNewDev *newDev = new DialogNewDev(dev);
-    //DialogNewDev *newDev = new DialogNewDev(this);
     newDev->show();
-    //ui->comboBoxDevice->addItem("192.168.10.10");
 }
 
 void Dialog::on_deleteDevise_clicked() {
     deleteDevise *delDev = new deleteDevise(this);
     delDev->show();
 }
-
-/*uint Dialog::addNewDevice() {
-    ui->comboBoxDevice->addItem("192.168.10.10");
-    return 0;
-}*/
-
-/*void Dialog::on_comboBoxDevice_activated(int index) {
-    if (index == 0) {
-        ui->photoLabel->setStyleSheet("image: url(:/Icons/startPict.png);");
-    } else if (index == 1) {
-        ui->photoLabel->setStyleSheet("image: url(:/Icons/Computer.png);");
-    } else if (index == 2) {
-        ui->photoLabel->setStyleSheet("image: url(:/Icons/Notepad.png);");
-    } else if (index == 3) {
-        ui->photoLabel->setStyleSheet("image: url(:/Icons/Printer.png);");
-    }
-}*/
-
-/*void Dialog::changeIndexPhoto(int index) {
-
-}*/
 
 void Dialog::on_comboBoxDevice_activated(const QString &arg1) {
     for (auto in : photoDev) {
