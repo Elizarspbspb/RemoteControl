@@ -133,3 +133,6 @@ set_target_properties(remoteControl PROPERTIES
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(remoteControl)
 endif()
+
+
+# В идеале организовать один общий класс родитель для работы с мар а от него 2 класса дочерних для инструкций и для устройств.

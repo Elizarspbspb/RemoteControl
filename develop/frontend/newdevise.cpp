@@ -146,5 +146,6 @@ void DialogNewDev::on_DialogNewDev_finished(int result) {
 
 void DialogNewDev::on_cancelPushButton_clicked() {
     cout << "~newDeviseAdd() 3" << endl;
-    //accept(); // error: cannot initialize object parameter of type 'QDialog' with an expression of type 'newDeviseAdd'
+    accept(); // error: cannot initialize object parameter of type 'QDialog' with an expression of type 'newDeviseAdd'
+    //delete uidev;
 }

@@ -3,7 +3,8 @@
 #include <iostream>
 #include <string>
 //#include <unordered_set>
-#include <unordered_map>
+//#include <unordered_map>
+#include <map>
 
 #include <QString>
 
@@ -54,27 +55,22 @@ private:
     //unordered_set<DeviseState, DeviseStateHash> masDev;
     // Определение типа для удобства
     //using MyMap = std::unordered_map<int, DeviseState>;
-    unordered_map<int, DeviseState> masDev;
+    //unordered_map<int, DeviseState> masDev;
+    map<int, DeviseState> masDev;
 public:
     Deviсe();
     int startWork();
     //DeviseState *getDevices();
     //unordered_map<int, DeviseState> *getDevices();
-    unordered_map<int, DeviseState> getMasDev();
+    //unordered_map<int, DeviseState> getMasDev();
+    map<int, DeviseState> getMasDev();
     DeviseState getDevState();
 
     QJsonArray loadDevices(const QString& filename);    // Функция для загрузки JSON файла
-    //void saveDevices(const QString& filename, const QJsonArray& devices); // Функция для сохранения JSON файла
-    //void saveDevices(const QJsonArray& devices); // Функция для сохранения JSON файла
-    bool saveDevices(const std::unordered_map<int, DeviseState>&);
-    //int getNextId(const QJsonArray& devices);           // Функция для вычисления следующего ID
-    int getNextId(const std::unordered_map<int, DeviseState>&);
-    //void addDevice(QJsonArray&, const QString&, const QString&, const QString&, const QString&); // Функция для добавления нового устройства
-    //void addDevice(const std::unordered_map<int, DeviseState> &, const QString&, const QString&, const QString&, const QString&); // Функция для добавления нового устройства
+    //bool saveDevices(const std::unordered_map<int, DeviseState>&);
+    bool saveDevices(const std::map<int, DeviseState>&);
+    //int getNextId();
     void addDevice(const QString&, const QString&, const QString&, const QString&); // Функция для добавления нового устройства
-
-    // Делаем класс Display другом класса Values
-    //friend class newDeviseAdd;
 
     ~Deviсe() {};
 };
