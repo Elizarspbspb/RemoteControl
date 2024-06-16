@@ -134,11 +134,12 @@ qDebug() << "Cont... 555" << Qt::endl;
     QJsonArray devicesArray = loadDevices(localFileName);
     qDebug() << "Cont... 55" << Qt::endl;
     for (const auto& [id, device] : deviceMap) {
-        deviceObject["id"] = id;
-        deviceObject["name"] = QString::fromStdString(device.nameDevise);
-        deviceObject["IP-Addr"] = QString::fromStdString(device.ipAddress);
-        deviceObject["netMask"] = QString::fromStdString(device.netMask);
-        deviceObject["image"] = QString::fromStdString(device.imageResource);
+        //deviceObject["id"] = id;
+        deviceObject["1_Id"] = QString::fromStdString(device.id);
+        deviceObject["2_Name"] = QString::fromStdString(device.nameDevise);
+        deviceObject["3_IP-Addr"] = QString::fromStdString(device.ipAddress);
+        deviceObject["4_NetMask"] = QString::fromStdString(device.netMask);
+        deviceObject["5_Image"] = QString::fromStdString(device.imageResource);
         devicesArray.append(deviceObject);
     }
     // Ошибка - no known conversion from 'const std::string' (aka 'const basic_string<char>') to 'const QJsonValue' for 1st argument
@@ -172,11 +173,11 @@ int Deviсe::startWork() {
     foreach (const QJsonValue &value, jsonArray) {
         if (value.isObject()) {
             QJsonObject obj = value.toObject();
-            QString qid = obj["id"].toString();
-            QString name = obj["name"].toString();
-            QString ipAddress = obj["IP-Addr"].toString();
-            QString netMask = obj["netMask"].toString();
-            QString imageResource = obj["image"].toString();
+            QString qid = obj["1_Id"].toString();
+            QString name = obj["2_Name"].toString();
+            QString ipAddress = obj["3_IP-Addr"].toString();
+            QString netMask = obj["4_NetMask"].toString();
+            QString imageResource = obj["5_Image"].toString();
 
             // Выводим устройства
             qDebug() << "id:" << qid;
@@ -238,8 +239,8 @@ void Deviсe::addDevice(const QString& name, const QString& ipAddress, const QSt
 
 
         //dev.id = qid.toStdString();
-    dev.id = QString::number(id).toStdString();
-    //dev.id = QString::number(masDev.end()->first).toStdString();
+    //dev.id = QString::number(id).toStdString();
+    dev.id = QString::number(masDev.end()->first+1).toStdString();
     qDebug() << "Cont... 111" << Qt::endl;
         dev.nameDevise = name.toStdString();
         dev.ipAddress = ipAddress.toStdString();

@@ -1,30 +1,30 @@
 [
-	{
-                "id": "1",
-		"name": "ARM-10-astra",
-                "IP-Addr": "192.168.33.110",
-		"netMask": "255.255.252.0",
-                "image": "image: url(:/Icons/Printer.png);"
-	},
-	{
-                "id": "2",
-		"name": "ARM-9-windows",
-		"IP-Addr": "192.168.33.9",
-		"netMask": "255.255.252.0",
-                "image": "image: url(:/Icons/Notepad.png);"
-	},
-	{
-                "id": "3",
-		"name": "ARM-1-windows",
-		"IP-Addr": "192.168.33.1",
-		"netMask": "255.255.252.0",
-                "image": "image: url(:/Icons/Computer.png);"
-	},
-	{
-                "id": "4",
-		"name": "",
-                "IP-Addr": "192.168.33.7",
-		"netMask": "255.255.252.0",
-                "image": "image: url(:/Icons/Computer.png);"
-        }
+    {
+        "1_Id": "1",
+        "2_Name": "ARM-10-astra",
+        "3_IP-Addr": "192.168.33.110",
+        "4_NetMask": "255.255.252.0",
+        "5_Image": "image: url(:/Icons/Printer.png);"
+    },
+    {
+        "1_Id": "2",
+        "2_Name": "ARM-9-windows",
+        "3_IP-Addr": "192.168.33.9",
+        "4_NetMask": "255.255.252.0",
+        "5_Image": "image: url(:/Icons/Notepad.png);"
+    },
+    {
+        "1_Id": "3",
+        "2_Name": "ARM-1-windows",
+        "3_IP-Addr": "192.168.33.1",
+        "4_NetMask": "255.255.252.0",
+        "5_Image": "image: url(:/Icons/Computer.png);"
+    },
+    {
+        "1_Id": "4",
+        "2_Name": "",
+        "3_IP-Addr": "192.168.33.7",
+        "4_NetMask": "255.255.252.0",
+        "5_Image": "image: url(:/Icons/Computer.png);"
+    }
 ]
