@@ -10,10 +10,8 @@
 #include <iostream>
 
 QT_BEGIN_NAMESPACE
-//namespace Ui1 { class DialogNewDev; }
 namespace Ui { class DialogNewDev; }
 QT_END_NAMESPACE
-
 
 class DialogNewDev : public QDialog {
     Q_OBJECT

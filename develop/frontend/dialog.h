@@ -21,6 +21,7 @@ private:
 
 public:
     Dialog(Deviсe &dev, QWidget *parent = nullptr);
+    void updateViewDevises();
     ~Dialog();
 
 private slots:
