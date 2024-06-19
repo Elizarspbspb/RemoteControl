@@ -6,6 +6,7 @@
 
 #include "./ui_addNewDev.h"
 //#include "./ui_DialogNewDev.h"
+#include "./ui_dialog.h"    // new
 
 using namespace std;
 
@@ -14,8 +15,9 @@ using namespace std;
 }*/
 
 //DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui1::DialogNewDev), nwDev(device) {}
-DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui::DialogNewDev), nwDev(device) {
+DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui::DialogNewDev), uimain(new Ui::Dialog), nwDev(device) {
     uidev->setupUi(this);
+    uimain->setupUi(this);      // new
 }
 
 void DialogNewDev::on_addPushButton_clicked() {
@@ -31,7 +33,7 @@ void DialogNewDev::on_addPushButton_clicked() {
     // Добавляем новое устройство в список
     //addDevice(devices, name, ipAddr, netMask, image);
     //Deviсe::addDevice(name, ipAddr, netMask, image);
-    nwDev.addDevice(name, ipAddr, netMask, image);
+    nwDev.addDevice(name, ipAddr, netMask, image, *uimain);
     accept();
     // Сохраняем обновленный список устройств обратно в файл
     //saveDevices(devices);

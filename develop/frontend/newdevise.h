@@ -11,6 +11,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DialogNewDev; }
+namespace Ui { class Dialog; }      // new
 QT_END_NAMESPACE
 
 class DialogNewDev : public QDialog {
@@ -19,6 +20,7 @@ class DialogNewDev : public QDialog {
 private:
     //Ui::NewDevise *uidev;
     Ui::DialogNewDev *uidev;
+    Ui::Dialog *uimain;
     //Ui1::DialogNewDev *uidev;
     //Deviсe& nwDev;
     Deviсe nwDev;

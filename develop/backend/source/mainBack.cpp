@@ -5,6 +5,8 @@
 #include <QStringList>
 #include <QString>
 
+#include "./ui_dialog.h"
+
 void appendToJson(const QString &fileName, const QJsonObject &newObject) {
     QFile file(fileName);
 
@@ -128,7 +130,8 @@ int Deviсe::startWork() {
 }
 
 // Функция для добавления нового устройства
-void Deviсe::addDevice(const QString& name, const QString& ipAddress, const QString& netMask, const QString& imageResource) {
+//void Deviсe::addDevice(const QString& name, const QString& ipAddress, const QString& netMask, const QString& imageResource) {
+void Deviсe::addDevice(const QString& name, const QString& ipAddress, const QString& netMask, const QString& imageResource, Ui::Dialog& uiMain) {
     DeviseState dev;
     int id = masDev.end()->first;
     dev.id = QString::number(masDev.end()->first+1).toStdString();
@@ -137,13 +140,14 @@ void Deviсe::addDevice(const QString& name, const QString& ipAddress, const QSt
     dev.netMask = netMask.toStdString();
     dev.imageResource = imageResource.toStdString();
     try {
-        int newKey = masDev.size() + 1;
-        masDev.insert({newKey, dev});
+        masDev.insert({masDev.size() + 1, dev});        // возможная уязвимость переполнения size !!!
         saveDevices(masDev);
     } catch (...) {
         qDebug() << "Data from DataBase has not been added" << Qt::endl;
     }
-
+    qDebug() << "D----------------uiMain.comboBoxDevice->clear()------------------" << Qt::endl;
+    uiMain.comboBoxDevice->clear();
+    qDebug() << "D----------------uiMain.comboBoxDevice->clear()------------------" << Qt::endl;
     //startWork();
 }
 

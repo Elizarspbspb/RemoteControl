@@ -77,11 +77,12 @@ void Dialog::on_addNewDevise_clicked() {
     DialogNewDev *newDev = new DialogNewDev(dev);
     newDev->show();
     dev.startWork();
-    //ui->comboBoxDevice->clear();
+    /*ui->comboBoxDevice->clear();
     ui->comboBoxDevice->clearEditText();
     ui->comboBoxDevice->clearFocus();
     ui->comboBoxDevice->clearMask();
     updateViewDevises();
+    //accept(); */
 }
 
 void Dialog::on_deleteDevise_clicked() {
