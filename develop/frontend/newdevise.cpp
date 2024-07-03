@@ -6,7 +6,9 @@
 
 #include "./ui_addNewDev.h"
 //#include "./ui_DialogNewDev.h"
-#include "./ui_dialog.h"    // new
+//#include "./ui_dialog.h"    // new
+
+#include "dialog.h"         // new
 
 using namespace std;
 
@@ -14,10 +16,12 @@ using namespace std;
     uidev->setupUi(this);
 }*/
 
-//DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui1::DialogNewDev), nwDev(device) {}
-DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui::DialogNewDev), uimain(new Ui::Dialog), nwDev(device) {
+//DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui::DialogNewDev), nwDev(device) {}
+//DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui::DialogNewDev), uimain(new Ui::Dialog), nwDev(device) {
+//DialogNewDev::DialogNewDev(Deviсe device, QWidget *parent) : QDialog(parent), uidev(new Ui::DialogNewDev), nwDev(device), dialogs() {
+DialogNewDev::DialogNewDev(Deviсe &device, MainDialog &mainDia, QWidget *parent) : QDialog(parent), uidev(new Ui::DialogNewDev), newDev(device), dia(mainDia) {
     uidev->setupUi(this);
-    uimain->setupUi(this);      // new
+    //uimain->setupUi(this);      // new
 }
 
 void DialogNewDev::on_addPushButton_clicked() {
@@ -33,10 +37,15 @@ void DialogNewDev::on_addPushButton_clicked() {
     // Добавляем новое устройство в список
     //addDevice(devices, name, ipAddr, netMask, image);
     //Deviсe::addDevice(name, ipAddr, netMask, image);
-    nwDev.addDevice(name, ipAddr, netMask, image, *uimain);
+    //nwDev.addDevice(name, ipAddr, netMask, image, *uimain);
+    newDev.addDevice(name, ipAddr, netMask, image);
+    dia.clearView();
+    dia.updateViewDevises();
+    //salkaDev->addDevice(name, ipAddr, netMask, image);
     accept();
     // Сохраняем обновленный список устройств обратно в файл
     //saveDevices(devices);
+
 }
 
 DialogNewDev::~DialogNewDev() {

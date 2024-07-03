@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     Deviсe activ;
     //Dialog window;
     //Deviсe *activ = new Device();
-    Dialog window(activ);
+    MainDialog window(activ);
     //MenuManager mainWindow(&window);
     window.show();
     return app.exec();

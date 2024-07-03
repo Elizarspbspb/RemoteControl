@@ -11,29 +11,26 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Dialog; }
 QT_END_NAMESPACE
 
-class Dialog : public QDialog {
+class MainDialog : public QDialog {
     Q_OBJECT
 
 private:
+    //MainDialog *ui;
     Ui::Dialog *ui;
     Deviсe& dev;
     unordered_map<QString, QString> photoDev;
 
 public:
-    Dialog(Deviсe &dev, QWidget *parent = nullptr);
+    MainDialog(Deviсe &dev, QWidget *parent = nullptr);
     void updateViewDevises();
-    ~Dialog();
+    void clearView();
+    ~MainDialog();
 
 private slots:
     void on_deleteDevise_clicked();
-
-private slots:
     void on_comboBoxDevice_activated(const QString &arg1);
-
-private slots:
     void on_exitButton_clicked();
-
-private slots:
     void on_addNewDevise_clicked();
+
 };
 #endif // DIALOG_H
